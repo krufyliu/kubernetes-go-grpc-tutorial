@@ -1,0 +1,13 @@
+FROM golang:1.9.2
+
+# Change this path!
+WORKDIR /go/src/github.com/krufyliu/kubernetes-go-grpc-tutorial/api
+COPY api .
+COPY pb ../pb
+
+RUN go get -v ./...
+RUN go install -v ./...
+
+EXPOSE 3000
+
+CMD [ "api" ]
